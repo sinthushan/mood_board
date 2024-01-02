@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
+def profile(request, id):
+    return HttpResponse(f"welcome to your profile {id}")
+
 def delete_creator(request, id):
     return HttpResponse(f"the following creator will be deleted {id}")
 
