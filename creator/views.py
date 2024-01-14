@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import Register
 from .models import User, Creator
+from gallery.models import Gallery
 
 def register(request):
     err_msg = ""
@@ -20,6 +21,8 @@ def register(request):
             creator = Creator(user=user)
             creator.save()
             id = creator.id
+            gallery = Gallery(creator=creator)
+            gallery.save()
             return HttpResponseRedirect(f"/creator/{id}")
     else:
         form = Register()
@@ -28,6 +31,7 @@ def register(request):
 def sucess(request):
     id = request.user.id
     return HttpResponseRedirect(f"/creator/{id}")
+
 def profile(request, id):
     return HttpResponse(f"welcome to your profile {id}")
 
