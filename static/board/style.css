@@ -1,0 +1,51 @@
+
+a {
+    text-decoration: none;
+
+}
+
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 60vh;
+    margin: 10rem;
+    justify-content: center;
+    background-color: aquamarine;
+}
+
+.start-button{
+    color: black;
+    font-weight: bolder;
+    background-color: rgba(240, 248, 255, 0.419);
+    text-decoration: underline;
+}
+
+.splash-container{
+    background-image: url("images/karin-scholte-wQ7jPSIZwZo-unsplash.jpg") ;
+    min-height: 90vh;
+    margin: 2rem;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-title{
+    color: black;
+    font-size: 3rem;
+    font-weight: bolder;
+    background-color: rgba(240, 248, 255, 0.419);
+    text-align: center;
+    width: 100%;
+}
+
+.app-description{
+    font-size: 2rem;
+    font-weight: bolder;
+    background-color: rgba(240, 248, 255, 0.419);
+    width: 100%;
+    text-align: center;
+}

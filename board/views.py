@@ -17,8 +17,18 @@ def create_board(request):
 
     return render(request, "board/create.html", {"images": images})
 
+@login_required(login_url='/creator/login')
+def get_boards(request):
+    user_id = request.user.id
+    creator =  Creator.objects.get(user_id=user_id)
+    boards = creator.board_set.all()
+    return render(request, "board/all.html", {"boards": boards})
+
+@login_required(login_url='/creator/login')
 def delete_board(request, id):
     return HttpResponse(f"the following board will be deleted {id}")
 
+
+@login_required(login_url='/creator/login')
 def update_board(request, id):
     return HttpResponse(f"the following board will be updated {id}")

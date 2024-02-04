@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="boards">
+    {% for board in boards %}
+       <a href="{{board.id}}">{{board.board_name}}</a>
+    {% endfor  %}
+</div>        
+<div id="canvas" droppable>
+
+</div>
+{% endblock content %}

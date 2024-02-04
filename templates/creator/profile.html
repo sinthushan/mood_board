@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile-links">
+    <a href="./{{creator.id}}/gallery">Gallery</a>
+    <a href="{% url 'boards' %}">Boards</a>
+</div>
+{% endblock content%}

@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="post" action="">
-    {% csrf_token %} 
-    {% if err_msg %} <div>{{err_msg}}</div> {% endif %}  
-    {{ form }}
-    <input type="submit" value="Submit"/>
-</form>
-<span>Already have an account? </span><a href="{% url 'login' %}" class="start-button">Login</a>
+<div class="form-container">
+    <form class="register-form" method="post" action="">
+        {% csrf_token %} 
+        {% if err_msg %} <div>{{err_msg}}</div> {% endif %}  
+        {{ form }}
+        <input type="submit" value="Submit"/>
+    </form>
+    <span>Already have an account? <a href="{% url 'login' %}" class="start-button">Login</a> </span>
+</div>
+
 {% endblock content %}

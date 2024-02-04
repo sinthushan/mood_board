@@ -33,7 +33,9 @@ def sucess(request):
     return HttpResponseRedirect(f"/creator/{id}")
 
 def profile(request, id):
-    return HttpResponse(f"welcome to your profile {id}")
+    user_id = request.user.id
+    creator =  Creator.objects.get(user_id=user_id)
+    return render(request, "creator/profile.html", {'creator': creator})
 
 def delete_creator(request, id):
     return HttpResponse(f"the following creator will be deleted {id}")
