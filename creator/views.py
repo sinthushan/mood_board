@@ -19,22 +19,18 @@ def register(request):
             user = User.objects.create_user(username, password=password)
             user.save()
             creator = Creator(user=user)
-            creator.save()
-            id = creator.id
-            gallery = Gallery(creator=creator)
-            gallery.save()
+            id = creator.save()
             return HttpResponseRedirect(f"/creator/{id}")
     else:
         form = Register()
         return render(request, "creator/register.html", {"form": form, "err_msg":err_msg})
 
 def sucess(request):
-    id = request.user.id
+    id = request.user.creator.id
     return HttpResponseRedirect(f"/creator/{id}")
 
 def profile(request, id):
-    user_id = request.user.id
-    creator =  Creator.objects.get(user_id=user_id)
+    creator = request.user.creator
     return render(request, "creator/profile.html", {'creator': creator})
 
 def delete_creator(request, id):

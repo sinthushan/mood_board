@@ -1,18 +1,24 @@
 from django.db import models
-from creator.models import Creator
+
 from board.models import Board
 
 
 class Gallery(models.Model):
     # an instance of this model should be created when a new creator is created
-    creator = models.OneToOneField(Creator, on_delete=models.CASCADE, related_name="gallery")
+    creator = models.OneToOneField("creator.Creator", on_delete=models.CASCADE, related_name="gallery")
 
     def upload_img(self, file):
-        with open(f"media/{file.name}", 'wb') as f:
+        file_name = file.name.replace(" ", "_") 
+        with open(f"media/{file_name}", 'wb') as f:
             for chunk in file.chunks():
                 f.write(chunk)
-        new_img = Inspo(gallery_ID = self, image_url = f'media/{file.name}')
+        new_img = Inspo(gallery_ID = self, image_url = f'/media/{file_name}')
         new_img.save()
+
+    def get_image_urls(self):
+        inspos = self.inspo_set.all()
+        return [inspo.image_url for inspo in inspos]
+
 
 class Inspo(models.Model):
     gallery_ID =  models.ForeignKey(Gallery, on_delete=models.CASCADE)

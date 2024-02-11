@@ -8,19 +8,14 @@ from creator.models import Creator
 
 @login_required(login_url='/creator/login')
 def create_board(request):
-    user_id = request.user.id
-    creator =  Creator.objects.get(user_id=user_id)
-    gallery = creator.gallery
-    
-    inspos = gallery.inspo_set.all()
-    images = ['../' + inspo.image_url for inspo in inspos]
+    creator = request.user.creator
+    images = creator.gallery.get_image_urls
 
     return render(request, "board/create.html", {"images": images})
 
 @login_required(login_url='/creator/login')
 def get_boards(request):
-    user_id = request.user.id
-    creator =  Creator.objects.get(user_id=user_id)
+    creator = request.user.creator
     boards = creator.board_set.all()
     return render(request, "board/all.html", {"boards": boards})
 
