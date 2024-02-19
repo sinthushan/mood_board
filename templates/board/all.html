@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="header-links">
+    <div class="header-link"><a href="{% url 'profile' id=creator_id %}">profile</a></div>
+    <div class="header-link"><a href="{% url 'create_board' %}">create</a></div>
+</div>
 <div id="boards">
     {% for board in boards %}
        <a href="{{board.id}}">{{board.board_name}}</a>

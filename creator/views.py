@@ -3,7 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .forms import Register
 from .models import User, Creator
 from gallery.models import Gallery
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 def register(request):
     err_msg = ""
     if request.method == "POST":
@@ -18,6 +19,7 @@ def register(request):
         if form.is_valid():
             user = User.objects.create_user(username, password=password)
             user.save()
+            login(request,user)
             creator = Creator(user=user)
             id = creator.save()
             return HttpResponseRedirect(f"/creator/{id}")
@@ -29,6 +31,7 @@ def sucess(request):
     id = request.user.creator.id
     return HttpResponseRedirect(f"/creator/{id}")
 
+@login_required()
 def profile(request, id):
     creator = request.user.creator
     return render(request, "creator/profile.html", {'creator': creator})

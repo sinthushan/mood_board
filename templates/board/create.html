@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+<div id="board-creator">
 <div id="gallery">
     {% for image in images %}
-        <img src={{image}} alt="" draggable="true">
+        <img class="gallery-img" src={{image}} alt="" draggable="true">
     {% endfor  %}
 </div>        
 <div id="canvas" droppable>
 
+</div>
 </div>
 {% endblock content %}

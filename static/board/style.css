@@ -49,3 +49,50 @@ a {
     width: 100%;
     text-align: center;
 }
+
+.header-links{
+    display: flex;
+}
+
+.header-link{
+    border-right: 0.1rem solid;
+    padding-right: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+
+#board-creator{
+    display: flex;
+}
+
+#canvas{
+    flex-grow: 100;
+    overflow: hidden;
+}
+
+#gallery{
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+}
+
+.gallery-container{
+    display: flex;
+    margin: 5rem;
+}
+
+
+.gallery-img{
+    margin: 1rem;
+}
+
+.image-container{
+    width: 25rem;
+    height: 20rem;
+}
+
+img{
+
+    width: 100%;
+    height: 100%;
+}

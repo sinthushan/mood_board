@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="{% url 'upload' id=creator_id %}">upload image</a>
+<div class="header-links">
+    <div class="header-link"><a href="{% url 'profile' id=creator_id %}">profile</a></div>
+    <div class="header-link"><a href="{% url 'upload' id=creator_id %}">upload image</a></div>
+</div>
 <div class="gallery-container">
     {% for image in images %}
         <div class="image-container"> <img src={{image}} alt=""> </div>
